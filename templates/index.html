@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci com Memoization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Fibonacci com Memoization</h1>
+        
+        <form method="POST">
+            <label for="number">Digite um número:</label>
+            <input type="number" id="number" name="number" min="0" required>
+            <button type="submit">Calcular</button>
+        </form>
+        
+        {% if sequence %}
+        <div class="results">
+            <h2>Resultado para Fibonacci({{ n }}): {{ sequence[-1].value }}</h2>
+            
+            <div class="sections">
+                <div class="sequence-section">
+                    <h3>Sequência Completa:</h3>
+                    <div class="sequence">
+                        {% for item in sequence %}
+                        <div class="sequence-item {{ item.source.replace(' ', '-') }}">
+                            F({{ item.n }}) = {{ item.value }}
+                            <span class="source">{{ item.source }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="log-section">
+                    <h3>Ordem de Cálculo:</h3>
+                    <div class="log">
+                        {% for log in calculation_log %}
+                        <div class="log-item {{ log.source.replace(' ', '-') }}">
+                            [{{ loop.index }}] F({{ log.n }}) = {{ log.value }}
+                            <span class="source">{{ log.source }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <p>Total de cálculos: {{ calculation_log|length }}</p>
+                <p>Valores do cache: {{ calculation_log|selectattr('source', 'equalto', 'base case')|list|length + calculation_log|selectattr('source', 'equalto', 'cached')|list|length }}</p>
+                <p>Novos cálculos: {{ calculation_log|selectattr('source', 'equalto', 'new calculation')|list|length }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
