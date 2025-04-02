@@ -44,3 +44,19 @@ A implementação do cache foi feita utilizando um **dicionário Python** dentro
 
 ## 4. Conclusão
 A implementação utilizando memoization mostrou-se extremamente eficaz para otimizar o cálculo da sequência de Fibonacci. O uso de cache eliminou recalculos desnecessários, reduzindo significativamente o tempo de execução. A interface criada permitiu ao usuário visualizar quais valores foram recuperados do cache e quais foram calculados do zero, demonstrando na prática os benefícios da memoization.
+
+## OBS:
+
+Para rodar o programa é necessário seguir os seguintes passos:
+
+1º - Instalar o pacote Flask
+
+``` python 
+pip install flask 
+```
+
+2º - Rodar o programa com o comando abaixo:
+
+```python
+python app.py
+```
