@@ -1,6 +1,6 @@
 # memoization-dynamic-programming
 
-## Relatório da tarega está apresentado no arquivo `report.md`
+## Relatório da tarefa está apresentado no arquivo `report.md`
 
 
 ## Problema que use Memoization (Programação dinâmica)
